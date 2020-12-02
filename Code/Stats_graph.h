@@ -11,10 +11,15 @@
 #define STATS_GRAPH_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include <unordered_map>
 
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
+struct Target {
+    unordered_map<string, int> referors;
+    int total;
+};
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Stats_graph>
@@ -64,10 +69,11 @@ public:
 
 //------------------------------------------------------------------ PRIVE
 
-protected:
+private :
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
+    typedef unordered_map<string, Target> targetsMap;
 
 };
 

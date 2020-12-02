@@ -13,9 +13,27 @@
 using namespace std;
 //--------------------------------------------------- Interfaces utilisées
 #include <fstream>
+#include <string>
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
+struct Log {
+    string ipAddress;
+    string userLogName;
+    string userName;
+    string requestDate;
+    string requestTime;
+    string url;
+    int responseCode;
+    int amoutOfData;
+    string referer;
+    string browserInfo;
+    Log (string ip, string logName, string username, string date, string time, string anurl,
+        int responsecode, int dataAmount, string aReferer, string browser):
+            ipAddress(ip), userLogName(logName), userName(username), requestDate(date),
+            requestTime(time), url(anurl), responseCode(responsecode), amoutOfData(dataAmount),
+            referer(aReferer), browserInfo(browser){}
+};
 
 //------------------------------------------------------------------------
 // Rôle de la classe <StreamLog>
@@ -29,6 +47,16 @@ class StreamLog : public ifstream
 
 public:
 //----------------------------------------------------- Méthodes publiques
+    ifstream & ReadFile (const string & fileName);
+    // Mode d'emploi :
+
+    // Contrat :
+
+    Log & GetLog();
+    // Mode d'emploi
+
+    // Contrat
+
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :
     //
@@ -37,7 +65,6 @@ public:
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-    StreamLog & operator = ( const StreamLog & unStreamLog );
     // Mode d'emploi :
     //
     // Contrat :
@@ -65,7 +92,8 @@ public:
 
 //------------------------------------------------------------------ PRIVE
 
-protected:
+private :
+    bool eof;
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
