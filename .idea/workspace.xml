@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:origin/master" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated />
   </component>
@@ -9,7 +34,12 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="930757b4-c72a-4b7d-a91e-b43a13659311" name="Default Changelist" comment="" />
+    <list default="true" id="930757b4-c72a-4b7d-a91e-b43a13659311" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stats_graph.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stats_graph.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,7 +77,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606918597427</updated>
-      <workItem from="1606918598841" duration="3345000" />
+      <workItem from="1606918598841" duration="3728000" />
     </task>
     <task id="LOCAL-00001" summary="Ajout Makefile">
       <created>1606918829066</created>
@@ -69,6 +99,29 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Ajout Makefile" />
     <MESSAGE value="Ajout stucture du projet + MAJ Makefile" />
@@ -79,6 +132,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2334" y="191" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1054/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606918617028" />
+    <state x="2570" y="330" width="611" height="429" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606937573395">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2570" y="330" width="611" height="429" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1054/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606937573395" />
     <state x="2362" y="47" width="1027" height="995" key="CommitChangelistDialog2" timestamp="1606936960511">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
