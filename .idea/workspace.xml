@@ -34,12 +34,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="930757b4-c72a-4b7d-a91e-b43a13659311" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stats_graph.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stats_graph.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" />
-    </list>
+    <list default="true" id="930757b4-c72a-4b7d-a91e-b43a13659311" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,7 +72,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606918597427</updated>
-      <workItem from="1606918598841" duration="3728000" />
+      <workItem from="1606918598841" duration="4033000" />
     </task>
     <task id="LOCAL-00001" summary="Ajout Makefile">
       <created>1606918829066</created>
@@ -93,7 +88,21 @@
       <option name="project" value="LOCAL" />
       <updated>1606936960550</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Modifs structure">
+      <created>1606937735692</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1606937735692</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Modifs structure">
+      <created>1606937878559</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1606937878559</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,32 +134,33 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Ajout Makefile" />
     <MESSAGE value="Ajout stucture du projet + MAJ Makefile" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout stucture du projet + MAJ Makefile" />
+    <MESSAGE value="Modifs structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modifs structure" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2334" y="191" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606918617028">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2334" y="191" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1054/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606918617028" />
-    <state x="2570" y="330" width="611" height="429" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606937573395">
+    <state x="2570" y="330" width="611" height="429" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606937598527">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2570" y="330" width="611" height="429" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1054/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606937573395" />
-    <state x="2362" y="47" width="1027" height="995" key="CommitChangelistDialog2" timestamp="1606936960511">
+    <state x="2570" y="330" width="611" height="429" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1054/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606937598527" />
+    <state x="2362" y="47" width="1027" height="995" key="CommitChangelistDialog2" timestamp="1606937878510">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2362" y="47" width="1027" height="995" key="CommitChangelistDialog2/0.0.1920.1054/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606936960511" />
+    <state x="2362" y="47" width="1027" height="995" key="CommitChangelistDialog2/0.0.1920.1054/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606937878510" />
     <state x="2610" y="241" width="532" height="606" key="FileChooserDialogImpl" timestamp="1606918658827">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2610" y="241" width="532" height="606" key="FileChooserDialogImpl/0.0.1920.1054/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606918658827" />
-    <state x="2375" y="213" width="1002" height="662" key="Vcs.Push.Dialog.v2" timestamp="1606937190906">
+    <state x="2375" y="213" width="1002" height="662" key="Vcs.Push.Dialog.v2" timestamp="1606937868893">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2375" y="213" width="1002" height="662" key="Vcs.Push.Dialog.v2/0.0.1920.1054/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606937190906" />
-    <state x="2645" y="442" width="469" height="204" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606936706994">
+    <state x="2375" y="213" width="1002" height="662" key="Vcs.Push.Dialog.v2/0.0.1920.1054/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606937868893" />
+    <state x="2645" y="442" width="469" height="204" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606937592289">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2645" y="442" width="469" height="204" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1054/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606936706994" />
+    <state x="2645" y="442" width="469" height="204" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1054/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606937592289" />
   </component>
 </project>
