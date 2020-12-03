@@ -1,7 +1,7 @@
 ECHO = echo
 GCC = g++
 CCFLAGS = -c -Wall -g -ansi -pedantic -O1 -std=c++11
-OBJETS = StreamLog.o Stats_graph.o main.o
+OBJETS = StreamLog.o Stats_graph.o main.o Utils.o
 PRINT_MAP = -DMAP
 #PRINT_MAP =
 EXEC = ../Tests/analog

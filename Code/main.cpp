@@ -5,6 +5,9 @@
 #include <iostream>
 #include <sstream>
 #include <fstream>
+#include <string>
+
+using namespace std;
 
 const string EXTENSION_IMAGE_JPG = ".jpg";
 const string EXTENSION_IMAGE_GIF = ".gif";
@@ -73,7 +76,7 @@ int main ( int argc, char* argv[])
     int i;
     bool hourFiltered = false;
     Time timetest (16,0,0);
-    Log logLine ("","","","",timetest,"test",200,0,"",""); // log de test
+    Log logLine ("","","","",timetest,"","test",200,0,"",""); // log de test
     bool extensionFiltered = false;
     int argHour2int=0;
     bool graphBuilt = false;
@@ -140,6 +143,31 @@ int main ( int argc, char* argv[])
             }
         }
     }
+    string inputFileName (argv[argc - 1]);
+    readFile(inputFileName);
+    // StreamLog readStream;
+    // Stats_graph statsAndGraph;
+    // int i;
+    // //while (!readStream.eof)
+    // {
+    //     for (i=1; i<argc ; ++i)
+    //     {
+    //         if (strcmp( argv[i], "-g") == 0)
+    //         {
+    //             //statsAndGraph.BuildGraph (argv[i+1]) où argv[i+1] = nomFichier.dot entré par l'utilisateur
+    //         }
+    //         if (strcmp( argv[i], "-e") == 0)
+    //         {
+    //             Filter excludeFilter (true,readStream.GetLog().requestTime.hour,false);
+    //             if (logFilter(readStream.GetLog(),excludeFilter))
+    //             {
+    //                 //statsAndGraph.InsertLog(readStream.GetLog())
+    //             }
+    //         }
+    //         if (strcmp( argv[i], "-t") == 0)
+    //         {
+    //             string arg(argv[i+1]);
+    //             int hourLog = stoi(arg);
 
 
     //while (!readStream.eof())
@@ -159,5 +187,15 @@ int main ( int argc, char* argv[])
         cout << "contruction du graphe" << endl;
     }
 
+    return 0;
+
 }
 
+void readFile (string fileName) {
+    StreamLog readStream (fileName);
+    while (!readStream.eof()) {
+        Log * log = readStream.GetLog();
+        if (! log) continue;
+        cout << *log << endl;
+    }
+}

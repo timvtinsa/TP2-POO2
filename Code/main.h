@@ -7,7 +7,7 @@
 *************************************************************************/
 
 //---------- Interface de la classe <Stats_graph> (fichier Stats_graph.h) ----------------
-#if ! defined ( MAIN_H )
+#if ! defined( MAIN_H )
 #define MAIN_H
 
 //--------------------------------------------------- Interfaces utilisées
@@ -28,6 +28,7 @@ struct Filter {
 bool logFilter (const Log & aLog, const Filter & aFilter);
 
 bool CheckFileExist(const string & fileName);
+void readFile(string fileName);
 
 #endif 
 
