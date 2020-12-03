@@ -29,6 +29,7 @@ bool logFilter (const Log & aLog, const Filter & aFilter);
 
 bool CheckFileExist(const string & fileName);
 void readFile(string fileName);
+bool CheckFileExist(const string & fileName);
 
 #endif 
 

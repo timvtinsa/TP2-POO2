@@ -8,6 +8,8 @@
 #include <string>
 
 using namespace std;
+#include <sstream>
+#include <fstream>
 
 const string EXTENSION_IMAGE_JPG = ".jpg";
 const string EXTENSION_IMAGE_GIF = ".gif";
@@ -186,7 +188,6 @@ int main ( int argc, char* argv[])
         //statsAndGraph.BuildGraph (fileNameGraph)
         cout << "contruction du graphe" << endl;
     }
-
     return 0;
 
 }
