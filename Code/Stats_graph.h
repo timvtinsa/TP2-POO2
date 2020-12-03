@@ -33,6 +33,16 @@ class Stats_graph
 
 public:
 //----------------------------------------------------- Méthodes publiques
+    //void InsertLog (const Log & logToInsert)
+    //Insère le log passé en entrée dans statsAndGraph.TargetsMap
+
+    //void BuildGraphFile (const string & fileName)
+    //Construit le fichier fileName.dot avec le code nécessaire pour générer le graphe
+    // 1) Construire tous les noeuds -> Attention car une cible peut être un refer donc un seul noeud
+
+    //void DisplayTopTen
+    //Surcharge de l'opérateur << pour afficher une cible avec la syntaxe ex: /page3.html (1 hits)
+
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :
     //

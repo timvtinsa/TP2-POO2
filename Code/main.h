@@ -27,5 +27,7 @@ struct Filter {
 
 bool logFilter (const Log & aLog, const Filter & aFilter);
 
+bool CheckFileExist(const string & fileName);
+
 #endif 
 
