@@ -17,15 +17,15 @@
 
 //------------------------------------------------------------------ Types
 struct Filter {
-    string graphFile;
     bool exclude;
-    string hour;
-    Filter () : 
-        graphFile(""), exclude(false), hour(""){}
+    int hour;
+    bool hourFiltered;
+    Filter ( const bool excludeLog = false, const int hr = 0, const bool hrFiltered = false) :
+        exclude(excludeLog), hour(hr), hourFiltered(hrFiltered) {}
 };
 
 
-bool filter (const Log & aLog, const Filter & aFilter);
+bool logFilter (const Log & aLog, const Filter & aFilter);
 
 #endif 
 

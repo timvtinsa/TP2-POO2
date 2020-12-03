@@ -30,11 +30,11 @@
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-StreamLog & StreamLog::operator = ( const StreamLog & unStreamLog )
+//StreamLog & StreamLog::operator = ( const StreamLog & unStreamLog )
 // Algorithme :
 //
-{
-} //----- Fin de operator =
+//{
+//} //----- Fin de operator =
 
 
 //-------------------------------------------- Constructeurs - destructeur

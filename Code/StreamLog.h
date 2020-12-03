@@ -17,21 +17,30 @@ using namespace std;
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
+struct Time {
+    int hour;
+    int minute;
+    int second;
+
+    Time(const int hr, const int min, const int sec) :
+        hour(hr), minute(min), second(sec) {}
+};
+
 struct Log {
     string ipAddress;
     string userLogName;
     string userName;
     string requestDate;
-    string requestTime;
+    Time requestTime; //  string requestTime;
     string url;
     int responseCode;
     int amoutOfData;
     string referer;
     string browserInfo;
-    Log (string ip, string logName, string username, string date, string time, string anurl,
+    Log (string ip, string logName, string username, string date, Time timeLog, string anurl,
         int responsecode, int dataAmount, string aReferer, string browser):
             ipAddress(ip), userLogName(logName), userName(username), requestDate(date),
-            requestTime(time), url(anurl), responseCode(responsecode), amoutOfData(dataAmount),
+            requestTime(timeLog), url(anurl), responseCode(responsecode), amoutOfData(dataAmount),
             referer(aReferer), browserInfo(browser){}
 };
 
@@ -62,7 +71,6 @@ public:
     //
     // Contrat :
     //
-
 
 //------------------------------------------------- Surcharge d'opérateurs
     // Mode d'emploi :

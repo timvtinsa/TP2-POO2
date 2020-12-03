@@ -73,7 +73,8 @@ private :
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-    typedef unordered_map<string, Target> targetsMap;
+    typedef unordered_map<string, Target> TargetsMap;
+    TargetsMap targets;
 
 };
 
