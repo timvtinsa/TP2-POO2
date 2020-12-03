@@ -48,6 +48,7 @@ Log * StreamLog::GetLog()
     if (line == "") {
         return NULL;
     }
+    stringstream ss;
     
     vector <string> tokens;
     split<vector <string>>(line, tokens);
@@ -64,8 +65,12 @@ Log * StreamLog::GetLog()
     string requestType = (*(begin++)).substr(1);
     string url = *(begin++);
     ++begin;
-    int responseCode = stoi(*(begin++));
-    int amoutOfData = stoi(*(begin++));
+    int responseCode;
+    ss << *(begin++);
+    ss >> responseCode;
+    int amountOfData;
+    ss << *(begin++);
+    ss >> amountOfData;
     string referer = *(begin++);
     string browser = *(begin++);
 
@@ -80,7 +85,7 @@ Log * StreamLog::GetLog()
         requestType,
         url,
         responseCode,
-        amoutOfData,
+        amountOfData,
         referer,
         browser
     );
