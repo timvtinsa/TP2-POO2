@@ -9,6 +9,8 @@
 #include <string>
 
 using namespace std;
+#include <sstream>
+#include <fstream>
 
 
 const string EXTENSION_IMAGE_JPG = ".jpg";
