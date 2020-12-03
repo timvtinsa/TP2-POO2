@@ -3,6 +3,9 @@
 #include "Stats_graph.h"
 #include <cstring>
 #include <iostream>
+#include <string>
+
+using namespace std;
 
 const string EXTENSION_IMAGE_JPG = ".jpg";
 const string EXTENSION_IMAGE_GIF = ".gif";
@@ -43,38 +46,52 @@ bool logFilter (const Log & aLog, const Filter & aFilter)
 
 int main ( int argc, char* argv[])
 {
-    StreamLog readStream;
-    Stats_graph statsAndGraph;
-    int i;
-    //while (!readStream.eof)
-    {
-        for (i=1; i<argc ; ++i)
-        {
-            if (strcmp( argv[i], "-g") == 0)
-            {
-                //statsAndGraph.BuildGraph (argv[i+1]) où argv[i+1] = nomFichier.dot entré par l'utilisateur
-            }
-            if (strcmp( argv[i], "-e") == 0)
-            {
-                Filter excludeFilter (true,readStream.GetLog().requestTime.hour,false);
-                if (logFilter(readStream.GetLog(),excludeFilter))
-                {
-                    //statsAndGraph.InsertLog(readStream.GetLog())
-                }
-            }
-            if (strcmp( argv[i], "-t") == 0)
-            {
-                string arg(argv[i+1]);
-                int hourLog = stoi(arg);
-
-                Filter hourFilter (false,hourLog,true);
-                if (logFilter(readStream.GetLog(),hourFilter))
-                {
-                    //statsAndGraph.InsertLog(readStream.GetLog())
-                }
-            }
-        }
+    cout << "It works" << endl;
+    for (int i = 0; i < argc; ++i) {
+        cout << "this is an argument : " << argv[i] << endl;
     }
+    string inputFileName (argv[argc - 1]);
+    readFile(inputFileName);
+    // StreamLog readStream;
+    // Stats_graph statsAndGraph;
+    // int i;
+    // //while (!readStream.eof)
+    // {
+    //     for (i=1; i<argc ; ++i)
+    //     {
+    //         if (strcmp( argv[i], "-g") == 0)
+    //         {
+    //             //statsAndGraph.BuildGraph (argv[i+1]) où argv[i+1] = nomFichier.dot entré par l'utilisateur
+    //         }
+    //         if (strcmp( argv[i], "-e") == 0)
+    //         {
+    //             Filter excludeFilter (true,readStream.GetLog().requestTime.hour,false);
+    //             if (logFilter(readStream.GetLog(),excludeFilter))
+    //             {
+    //                 //statsAndGraph.InsertLog(readStream.GetLog())
+    //             }
+    //         }
+    //         if (strcmp( argv[i], "-t") == 0)
+    //         {
+    //             string arg(argv[i+1]);
+    //             int hourLog = stoi(arg);
 
+    //             Filter hourFilter (false,hourLog,true);
+    //             if (logFilter(readStream.GetLog(),hourFilter))
+    //             {
+    //                 //statsAndGraph.InsertLog(readStream.GetLog())
+    //             }
+    //         }
+    //     }
+    // }
+    return 0;
 }
 
+void readFile (string fileName) {
+    StreamLog readStream (fileName);
+    while (!readStream.eof()) {
+        Log * log = readStream.GetLog();
+        if (! log) continue;
+        cout << *log << endl;
+    }
+}

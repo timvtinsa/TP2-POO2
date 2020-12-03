@@ -7,42 +7,56 @@
 *************************************************************************/
 
 //---------- Interface de la classe <StreamLog> (fichier StreamLog.h) ----------------
-#if ! defined ( STREAMLOG_H )
+#ifndef STREAMLOG_H
 #define STREAMLOG_H
 
-using namespace std;
 //--------------------------------------------------- Interfaces utilisées
 #include <fstream>
 #include <string>
+using namespace std;
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
-struct Time {
+struct Time
+{
     int hour;
     int minute;
     int second;
 
-    Time(const int hr, const int min, const int sec) :
-        hour(hr), minute(min), second(sec) {}
+    Time(int hr, int min, int sec) : hour(hr), minute(min), second(sec) {}
 };
 
-struct Log {
+ostream & operator << (ostream & out, const Time & t);
+
+struct DateTime
+{
+    string date;
+    int hour;
+    int minute;
+    int second;
+    DateTime(string dt, int hr, int min, int sec) : date(dt), hour(hr), minute(min), second(sec) {}
+};
+
+struct Log
+{
     string ipAddress;
     string userLogName;
     string userName;
     string requestDate;
-    Time requestTime; //  string requestTime;
+    Time requestTime;
+    string requestType;
     string url;
     int responseCode;
     int amoutOfData;
     string referer;
     string browserInfo;
-    Log (string ip, string logName, string username, string date, Time timeLog, string anurl,
-        int responsecode, int dataAmount, string aReferer, string browser):
-            ipAddress(ip), userLogName(logName), userName(username), requestDate(date),
-            requestTime(timeLog), url(anurl), responseCode(responsecode), amoutOfData(dataAmount),
-            referer(aReferer), browserInfo(browser){}
+    Log(const string &ip, const string &logName, const string &username, const string &date, const Time &timeLog, const string &rqType, const string &anurl,
+        int responsecode, int dataAmount, const string &aReferer, const string &browser) : ipAddress(ip), userLogName(logName), userName(username), requestDate(date),
+                                                                                           requestTime(timeLog), requestType(rqType), url(anurl), responseCode(responsecode), amoutOfData(dataAmount),
+                                                                                           referer(aReferer), browserInfo(browser) {}
 };
+
+ostream & operator << (ostream & out, const Log & log);
 
 //------------------------------------------------------------------------
 // Rôle de la classe <StreamLog>
@@ -52,16 +66,16 @@ struct Log {
 
 class StreamLog : public ifstream
 {
-//----------------------------------------------------------------- PUBLIC
+    //----------------------------------------------------------------- PUBLIC
 
 public:
-//----------------------------------------------------- Méthodes publiques
-    ifstream & ReadFile (const string & fileName);
+    //----------------------------------------------------- Méthodes publiques
+    void ReadFile(const string &fileName);
     // Mode d'emploi :
 
     // Contrat :
 
-    Log & GetLog();
+    Log * GetLog();
     // Mode d'emploi
 
     // Contrat
@@ -72,43 +86,41 @@ public:
     // Contrat :
     //
 
-//------------------------------------------------- Surcharge d'opérateurs
+    //------------------------------------------------- Surcharge d'opérateurs
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-
-//-------------------------------------------- Constructeurs - destructeur
-    StreamLog ( const StreamLog & unStreamLog );
+    //-------------------------------------------- Constructeurs - destructeur
+    StreamLog(const StreamLog &unStreamLog);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    StreamLog ( );
+    StreamLog();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~StreamLog ( );
+    StreamLog(const string &fileName);
+
+    virtual ~StreamLog();
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-//------------------------------------------------------------------ PRIVE
+    //------------------------------------------------------------------ PRIVE
 
-private :
-    bool eof;
-//----------------------------------------------------- Méthodes protégées
+private:
+    //----------------------------------------------------- Méthodes protégées
 
-//----------------------------------------------------- Attributs protégés
-
+    //----------------------------------------------------- Attributs protégés
 };
 
 //-------------------------------- Autres définitions dépendantes de <StreamLog>
 
 #endif // STREAMLOG_H
-

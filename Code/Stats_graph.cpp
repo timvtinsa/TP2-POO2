@@ -30,11 +30,11 @@ using namespace std;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-Stats_graph & Stats_graph::operator = ( const Stats_graph & unStats_graph )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
+// Stats_graph & Stats_graph::operator = ( const Stats_graph & unStats_graph )
+// // Algorithme :
+// //
+// {
+// } //----- Fin de operator =
 
 
 //-------------------------------------------- Constructeurs - destructeur
