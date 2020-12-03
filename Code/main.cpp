@@ -73,7 +73,7 @@ int main ( int argc, char* argv[])
 
     }
 
-    StreamLog readStream;
+    StreamLog readStream(logFileName);
     Stats_graph statsAndGraph;
     int i;
     bool hourFiltered = false;
@@ -145,40 +145,18 @@ int main ( int argc, char* argv[])
             }
         }
     }
-    string inputFileName (argv[argc - 1]);
-    readFile(inputFileName);
-    // StreamLog readStream;
-    // Stats_graph statsAndGraph;
-    // int i;
-    // //while (!readStream.eof)
-    // {
-    //     for (i=1; i<argc ; ++i)
-    //     {
-    //         if (strcmp( argv[i], "-g") == 0)
-    //         {
-    //             //statsAndGraph.BuildGraph (argv[i+1]) où argv[i+1] = nomFichier.dot entré par l'utilisateur
-    //         }
-    //         if (strcmp( argv[i], "-e") == 0)
-    //         {
-    //             Filter excludeFilter (true,readStream.GetLog().requestTime.hour,false);
-    //             if (logFilter(readStream.GetLog(),excludeFilter))
-    //             {
-    //                 //statsAndGraph.InsertLog(readStream.GetLog())
-    //             }
-    //         }
-    //         if (strcmp( argv[i], "-t") == 0)
-    //         {
-    //             string arg(argv[i+1]);
-    //             int hourLog = stoi(arg);
+    // string inputFileName (argv[argc - 1]);
+    // readFile(inputFileName);
 
 
-    //while (!readStream.eof())
+    while (!readStream.eof())
     {
         Filter optionsFilter (extensionFiltered,argHour2int,hourFiltered);
-        //Log logLine = *(readStream.GetLog());
+        Log logLine = *(readStream.GetLog());
         if (!(logFilter(logLine,optionsFilter)))
         {
             //statsAndGraph.InsertLog(readStream.GetLog())
+            cout << logLine;
             cout << "log insérer dans stats graph" << endl;
         }
     }
