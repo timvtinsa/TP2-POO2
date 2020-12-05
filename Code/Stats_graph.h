@@ -13,6 +13,7 @@
 //--------------------------------------------------- Interfaces utilisées
 #include <unordered_map>
 #include <string>
+#include "StreamLog.h"
 
 //------------------------------------------------------------- Constantes
 const int NUMBER_OF_ELEMENTS_TOP = 10;
@@ -21,6 +22,9 @@ typedef unordered_map<string, int> ReferorsMap;
 typedef unordered_map<string,string> NodesMap;
 struct Target {
     ReferorsMap referors;
+};
+struct Referers {
+    unordered_map<string, int> referors;
     int total;
 };
 
@@ -50,6 +54,8 @@ public:
 
     // void DisplayTopTen ( const TopTen & theTop);
     //Surcharge de l'opérateur << pour afficher une cible avec la syntaxe ex: /page3.html (1 hits)
+
+    void Add (const Log & log);
 
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :
@@ -95,7 +101,7 @@ private :
 
     string & writeNodes ( NodesMap & nodes, string & nodesList );
 //----------------------------------------------------- Attributs protégés
-    typedef unordered_map<string, Target> TargetsMap;
+    typedef unordered_map<string, Referers> TargetsMap;
     TargetsMap targets;
 
 };

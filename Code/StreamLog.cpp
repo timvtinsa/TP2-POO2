@@ -63,6 +63,7 @@ Log * StreamLog::GetLog()
     ++begin;
     string requestType = (*(begin++)).substr(1);
     string url = *(begin++);
+    deleteUrlOptions(url);
     ++begin;
     int responseCode = 0;
     try {

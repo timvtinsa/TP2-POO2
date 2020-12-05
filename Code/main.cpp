@@ -157,7 +157,10 @@ int main ( int argc, char* argv[])
         {
             //statsAndGraph.InsertLog(readStream.GetLog())
             cout << *logLine;
+            statsAndGraph.Add(*logLine);
             cout << "log insérer dans stats graph" << endl;
+        }
+        if (logLine != NULL) {
             delete logLine;
         }
     }*/

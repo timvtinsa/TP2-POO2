@@ -20,12 +20,15 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Stats_graph.h"
+#include "StreamLog.h"
+#include <unordered_map>
 
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
+<<<<<<< HEAD
 
 
 
@@ -78,12 +81,47 @@ void Stats_graph::BuildGraphFile (const string & fileName)
     graphFile.close();
 
 }
+=======
+void Stats_graph::Add(const Log &log)
+{
+    cout << "Adding new log" << endl;
+    // If the taget doesn't already exist
+    if (this->targets.count(log.url) == 0)
+    {
+        Referers refs;
+        string referorUrl = log.referer;
+        pair <string, int> refPair (referorUrl, 1);
+        refs.referors.insert(refPair);
+        refs.total = 1;
+        pair <string, Referers> targetPair (log.url, refs);
+        this->targets.insert(targetPair);
+    }
+    else
+    {
+        cout << "Log already exist" << endl;
+        string referorUrl = log.referer;
+        TargetsMap::iterator target = this->targets.find(log.url);
+        Referers refs = target->second;
+        // If the referor already refered to this target
+        if (refs.referors.count(referorUrl)) {
+            int previousHits = refs.referors.find(referorUrl)->second;
+            cout << "this is my pair => " << referorUrl << " : " << previousHits << endl;
+            pair <string, int> ref (referorUrl, ++previousHits);
+            refs.referors.insert(ref);
+        }else {
+            pair <string, int> ref(referorUrl, 1);
+            refs.referors.insert(ref);
+        }
+        refs.total++;
+    }
+}
+
+>>>>>>> stat_graph automatic creation
 // type Stats_graph::Méthode ( liste des paramètres )
 // Algorithme :
 //
 //{
 //} //----- Fin de Méthode
-
 
 //------------------------------------------------- Surcharge d'opérateurs
 // Stats_graph & Stats_graph::operator = ( const Stats_graph & unStats_graph )
@@ -92,9 +130,8 @@ void Stats_graph::BuildGraphFile (const string & fileName)
 // {
 // } //----- Fin de operator =
 
-
 //-------------------------------------------- Constructeurs - destructeur
-Stats_graph::Stats_graph ( const Stats_graph & unStats_graph )
+Stats_graph::Stats_graph(const Stats_graph &unStats_graph)
 // Algorithme :
 //
 {
@@ -103,8 +140,7 @@ Stats_graph::Stats_graph ( const Stats_graph & unStats_graph )
 #endif
 } //----- Fin de Stats_graph (constructeur de copie)
 
-
-Stats_graph::Stats_graph ( )
+Stats_graph::Stats_graph()
 // Algorithme :
 //
 {
@@ -113,16 +149,14 @@ Stats_graph::Stats_graph ( )
 #endif
 } //----- Fin de Stats_graph
 
-
-Stats_graph::~Stats_graph ( )
+Stats_graph::~Stats_graph()
 // Algorithme :
 //
 {
-#ifdef MAP
-    cout << "Appel au destructeur de <Stats_graph>" << endl;
-#endif
+    #ifdef MAP
+        cout << "Appel au destructeur de <Stats_graph>" << endl;
+    #endif
 } //----- Fin de ~Stats_graph
-
 
 //------------------------------------------------------------------ PRIVE
 

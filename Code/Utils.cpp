@@ -38,3 +38,14 @@ bool CheckFileExist(const string & fileName)
     ifstream file("../TestInfo/"+fileName);
     return file.good();
 }
+
+void deleteUrlOptions (string & url) {
+    vector <string> tokens;
+    split <vector <string>> (url, tokens, '?');
+    vector<string>::iterator begin = tokens.begin();
+    vector<string>::iterator end = tokens.end();
+    if (begin == end) {
+        return;
+    }
+    url = *begin;
+}
