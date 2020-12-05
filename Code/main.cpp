@@ -31,7 +31,7 @@ bool logFilter (const Log & aLog, const Filter & aFilter)
     if ( aFilter.hourFiltered )
     {
         int filterHour = aFilter.hour;
-        int logTimeHour = aLog.requestTime.hour;
+        int logTimeHour = aLog.requestDateTime.hour;
         if (logTimeHour != filterHour)
         {
             returnFilterHour = true;
@@ -74,8 +74,9 @@ int main ( int argc, char* argv[])
     Stats_graph statsAndGraph;
     int i;
     bool hourFiltered = false;
-    //Time timetest (16,0,0);
-    //Log logLine ("","","","",timetest,"","test",200,0,"",""); // log de test
+    Time timetest (16,0,0);
+    DateTime dt ("", 0, 0, 0);
+    Log logLine ("","","",dt,"","test",200,0,"",""); // log de test
     bool extensionFiltered = false;
     int argHour2int=0;
     bool graphBuilt = false;
@@ -151,12 +152,13 @@ int main ( int argc, char* argv[])
     /*while (!readStream.eof())
     {
         Filter optionsFilter (extensionFiltered,argHour2int,hourFiltered);
-        Log logLine = *(readStream.GetLog());
-        if (!(logFilter(logLine,optionsFilter)))
+        Log * logLine = readStream.GetLog();
+        if (logLine != NULL && !(logFilter(*logLine,optionsFilter)))
         {
             //statsAndGraph.InsertLog(readStream.GetLog())
-            cout << logLine;
+            cout << *logLine;
             cout << "log insérer dans stats graph" << endl;
+            delete logLine;
         }
     }*/
 

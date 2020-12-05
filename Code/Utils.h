@@ -16,7 +16,7 @@ void split (string str, T & container, char delimiter = ' ') {
     }
 }
 
-DateTime & parseDateTime (const string & dateTimeString);
+void parseDateTime (const string & dateTimeString, DateTime & dateTimeStruct);
 
 bool CheckFileExist(const string & fileName);
 

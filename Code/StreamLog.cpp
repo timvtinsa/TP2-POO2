@@ -39,6 +39,7 @@ Log * StreamLog::GetLog()
     
     if (!this->eof()) {
         std::getline(*this, line);
+        cout << "this is the just read line" << endl;
         cout << line << endl;
     } else {
         cerr << "You reached the end of the file" << endl;
@@ -48,29 +49,34 @@ Log * StreamLog::GetLog()
     if (line == "") {
         return NULL;
     }
-    stringstream ss;
     
     vector <string> tokens;
     split<vector <string>>(line, tokens);
     vector<string>::const_iterator begin = tokens.begin();
-    vector<string>::const_iterator end = tokens.end();
     
     string ipAddress = *(begin++);
     string userLogName = *(begin++);
     string userName = *(begin++);
     string dateTimeString = (*(begin++)).substr(1);
-    DateTime dt = parseDateTime(dateTimeString);
-    Time t (dt.hour, dt.minute, dt.second);
+    DateTime dt;
+    parseDateTime(dateTimeString, dt);
     ++begin;
     string requestType = (*(begin++)).substr(1);
     string url = *(begin++);
     ++begin;
-    int responseCode;
-    ss << *(begin++);
-    ss >> responseCode;
-    int amountOfData;
-    ss << *(begin++);
-    ss >> amountOfData;
+    int responseCode = 0;
+    try {
+        responseCode = stoi(*(begin++));
+    } 
+    catch (invalid_argument & ia) {
+        cerr << "Getting response code failed" << endl;
+    }
+    int amountOfData = 0;
+    try {
+        amountOfData = stoi(*(begin++));
+    } catch (invalid_argument & ia) {
+        cerr << "Getting amount of data failed" << endl;
+    }
     string referer = *(begin++);
     string browser = *(begin++);
 
@@ -80,8 +86,7 @@ Log * StreamLog::GetLog()
         ipAddress,
         userLogName,
         userName,
-        dt.date,
-        t,
+        dt,
         requestType,
         url,
         responseCode,
@@ -98,13 +103,17 @@ ostream & operator << (ostream & out, const Time & t) {
     return out;
 }
 
+ostream & operator << (ostream & out, const DateTime datetime) {
+    out << "[" << datetime.date << " | " << datetime.hour << ":" << datetime.minute << ":" << datetime.second << "]";
+    return out;
+}
+
 ostream & operator << (ostream & out, const Log & log) {
     out << "LOG { " << endl;
     out << "\t \"ipAddress\": " << log.ipAddress << "," << endl;
     out << "\t \"userLogName\": " << log.userLogName << "," << endl;
     out << "\t \"userName\": " << log.userName << "," << endl;
-    out << "\t \"requestDate\": " << log.requestDate << "," << endl;
-    out << "\t \"requestTime\": " << log.requestTime << "," << endl;
+    out << "\t \"requestDateTime\": " << log.requestDateTime << "," << endl;
     out << "\t \"requestType\": " << log.requestType << "," << endl;
     out << "\t \"url\": " << log.url << "," << endl;
     out << "\t \"responseCode\": " << log.responseCode << "," << endl;

@@ -26,7 +26,7 @@ struct Time
     Time(int hr, int min, int sec) : hour(hr), minute(min), second(sec) {}
 };
 
-ostream & operator << (ostream & out, const Time & t);
+ostream &operator<<(ostream &out, const Time &t);
 
 struct DateTime
 {
@@ -34,29 +34,31 @@ struct DateTime
     int hour;
     int minute;
     int second;
+    DateTime () {};
     DateTime(string dt, int hr, int min, int sec) : date(dt), hour(hr), minute(min), second(sec) {}
 };
+
+ostream & operator << (ostream & out, const DateTime datetime);
 
 struct Log
 {
     string ipAddress;
     string userLogName;
     string userName;
-    string requestDate;
-    Time requestTime;
+    DateTime requestDateTime;
     string requestType;
     string url;
     int responseCode;
     int amoutOfData;
     string referer;
     string browserInfo;
-    Log(const string &ip, const string &logName, const string &username, const string &date, const Time &timeLog, const string &rqType, const string &anurl,
-        int responsecode, int dataAmount, const string &aReferer, const string &browser) : ipAddress(ip), userLogName(logName), userName(username), requestDate(date),
-                                                                                           requestTime(timeLog), requestType(rqType), url(anurl), responseCode(responsecode), amoutOfData(dataAmount),
+    Log(const string &ip, const string &logName, const string &username, const DateTime &dttime, const string &rqType, const string &anurl,
+        int responsecode, int dataAmount, const string &aReferer, const string &browser) : ipAddress(ip), userLogName(logName), userName(username), requestDateTime(dttime),
+                                                                                           requestType(rqType), url(anurl), responseCode(responsecode), amoutOfData(dataAmount),
                                                                                            referer(aReferer), browserInfo(browser) {}
 };
 
-ostream & operator << (ostream & out, const Log & log);
+ostream &operator<<(ostream &out, const Log &log);
 
 //------------------------------------------------------------------------
 // Rôle de la classe <StreamLog>
@@ -75,10 +77,14 @@ public:
 
     // Contrat :
 
-    Log * GetLog();
-    // Mode d'emploi
-
-    // Contrat
+    Log *GetLog();
+    // Mode d'emploi:
+    //      Cette méthode s'occupe de la lecture d'une ligne dans le fichier actuellement lu 
+    //      dans l'objet StreamLog et retourne un pointeur vers un objet de type Log
+    //      L'objet renvoyé est créé dans la méthode. Il faut donc penser à libérer l'espace mémoire 
+    //      après utilisation.
+    // Contrat :
+    //      
 
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :

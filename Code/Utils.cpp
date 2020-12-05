@@ -5,7 +5,7 @@
 #include "StreamLog.h"
 using namespace std;
 
-DateTime & parseDateTime (const string & dateTimeString) {
+void parseDateTime (const string & dateTimeString, DateTime & dateTimeStruct) {
     vector <string> dateTimeTokens;
     split<vector<string>> (dateTimeString, dateTimeTokens, ':');
     vector<string>::const_reverse_iterator rBegin = dateTimeTokens.rbegin();
@@ -26,8 +26,11 @@ DateTime & parseDateTime (const string & dateTimeString) {
         cerr << "End of vector reached" << endl;
     }
     string dateStr = *(rBegin++);
-    DateTime* dt = new DateTime (dateStr, hours, mins, seconds);
-    return *dt;
+    
+    dateTimeStruct.date = dateStr;
+    dateTimeStruct.hour = hours;
+    dateTimeStruct.minute = mins;
+    dateTimeStruct.second = seconds;
 }
 
 bool CheckFileExist(const string & fileName)
