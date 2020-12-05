@@ -149,26 +149,23 @@ int main ( int argc, char* argv[])
     // readFile(inputFileName);
 
 
-    /*while (!readStream.eof())
+    while (!readStream.eof())
     {
         Filter optionsFilter (extensionFiltered,argHour2int,hourFiltered);
         Log * logLine = readStream.GetLog();
         if (logLine != NULL && !(logFilter(*logLine,optionsFilter)))
         {
             //statsAndGraph.InsertLog(readStream.GetLog())
-            //cout << *logLine;
+            cout << *logLine;
             statsAndGraph.Add(*logLine);
-            //cout << "log insérer dans stats graph" << endl;
+            cout << "log insérer dans stats graph" << endl;
         }
         if (logLine != NULL) {
             delete logLine;
         }
-<<<<<<< HEAD
-    }*/
-=======
     }
-    cout << statsAndGraph;
->>>>>>> building stat_graph tested, added operator << overload for Stat_graph and Referers
+    //}
+    //cout << statsAndGraph;
 
     if (graphBuilt)
     {

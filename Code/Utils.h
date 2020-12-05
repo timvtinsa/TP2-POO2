@@ -18,10 +18,7 @@ void split (string str, T & container, char delimiter = ' ') {
 
 void parseDateTime (const string & dateTimeString, DateTime & dateTimeStruct);
 
-<<<<<<< HEAD
 bool CheckFileExist(const string & fileName);
-=======
 void deleteUrlOptions (string & url);
->>>>>>> stat_graph automatic creation
 
 #endif
