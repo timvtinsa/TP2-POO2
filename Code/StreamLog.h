@@ -83,14 +83,6 @@ public:
     //      dans l'objet StreamLog et retourne un pointeur vers un objet de type Log
     //      L'objet renvoyé est créé dans la méthode. Il faut donc penser à libérer l'espace mémoire 
     //      après utilisation.
-    // Contrat :
-    //      
-
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
     //------------------------------------------------- Surcharge d'opérateurs
     // Mode d'emploi :

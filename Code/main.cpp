@@ -163,7 +163,12 @@ int main ( int argc, char* argv[])
         if (logLine != NULL) {
             delete logLine;
         }
+<<<<<<< HEAD
     }*/
+=======
+    }
+    cout << statsAndGraph;
+>>>>>>> building stat_graph tested, added operator << overload for Stat_graph and Referers
 
     if (graphBuilt)
     {

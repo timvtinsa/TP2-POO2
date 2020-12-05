@@ -28,10 +28,7 @@ struct Referers {
     int total;
 };
 
-/*struct TopTen {
-    string topTarget[NUMBER_OF_ELEMENTS_TOP][2];
-    int nbElements;
-};*/
+ostream & operator << (ostream & out, const Referers & refs);
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Stats_graph>
@@ -65,6 +62,8 @@ public:
 
 
 //------------------------------------------------- Surcharge d'opérateurs
+    friend ostream & operator << (ostream & out, const Stats_graph & stg);
+
     Stats_graph & operator = ( const Stats_graph & unStats_graph );
     // Mode d'emploi :
     //
