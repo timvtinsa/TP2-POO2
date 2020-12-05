@@ -39,8 +39,6 @@ Log * StreamLog::GetLog()
     
     if (!this->eof()) {
         std::getline(*this, line);
-        cout << "this is the just read line" << endl;
-        cout << line << endl;
     } else {
         cerr << "You reached the end of the file" << endl;
         return NULL;
@@ -65,23 +63,22 @@ Log * StreamLog::GetLog()
     string url = *(begin++);
     deleteUrlOptions(url);
     ++begin;
-    int responseCode = 0;
+    int responseCode = -1;
     try {
         responseCode = stoi(*(begin++));
     } 
     catch (invalid_argument & ia) {
         cerr << "Getting response code failed" << endl;
     }
-    int amountOfData = 0;
+    int amountOfData = -1;
     try {
         amountOfData = stoi(*(begin++));
     } catch (invalid_argument & ia) {
         cerr << "Getting amount of data failed" << endl;
     }
     string referer = *(begin++);
+    deleteUrlOptions(referer);
     string browser = *(begin++);
-
-    cout << "extraction done" << endl;
 
     return new Log(
         ipAddress,

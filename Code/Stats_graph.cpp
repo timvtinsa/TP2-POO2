@@ -84,7 +84,6 @@ void Stats_graph::BuildGraphFile (const string & fileName)
 =======
 void Stats_graph::Add(const Log &log)
 {
-    cout << "Adding new log" << endl;
     // If the taget doesn't already exist
     if (this->targets.count(log.url) == 0)
     {
@@ -98,7 +97,6 @@ void Stats_graph::Add(const Log &log)
     }
     else
     {
-        cout << "Log already exist" << endl;
         string referorUrl = log.referer;
         TargetsMap::iterator target = this->targets.find(log.url);
         Referers refs = target->second;

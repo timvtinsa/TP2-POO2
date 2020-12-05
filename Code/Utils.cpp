@@ -48,4 +48,12 @@ void deleteUrlOptions (string & url) {
         return;
     }
     url = *begin;
+    vector <string> tokens2;
+    split <vector <string>> (url, tokens2, ';');
+    begin = tokens2.begin();
+    end = tokens2.end();
+    if (begin == end) {
+        return;
+    }
+    url = *begin;
 }

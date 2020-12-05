@@ -156,9 +156,9 @@ int main ( int argc, char* argv[])
         if (logLine != NULL && !(logFilter(*logLine,optionsFilter)))
         {
             //statsAndGraph.InsertLog(readStream.GetLog())
-            cout << *logLine;
+            //cout << *logLine;
             statsAndGraph.Add(*logLine);
-            cout << "log insérer dans stats graph" << endl;
+            //cout << "log insérer dans stats graph" << endl;
         }
         if (logLine != NULL) {
             delete logLine;

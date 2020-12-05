@@ -102,6 +102,7 @@ private :
 //----------------------------------------------------- Attributs protégés
     typedef unordered_map<string, Referers> TargetsMap;
     TargetsMap targets;
+    TargetsMap top10[10];
 
 };
 
