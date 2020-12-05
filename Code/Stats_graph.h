@@ -12,14 +12,22 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include <unordered_map>
+#include <string>
 
 //------------------------------------------------------------- Constantes
-
+const int NUMBER_OF_ELEMENTS_TOP = 10;
 //------------------------------------------------------------------ Types
+typedef unordered_map<string, int> ReferorsMap;
+typedef unordered_map<string,string> NodesMap;
 struct Target {
-    unordered_map<string, int> referors;
+    ReferorsMap referors;
     int total;
 };
+
+/*struct TopTen {
+    string topTarget[NUMBER_OF_ELEMENTS_TOP][2];
+    int nbElements;
+};*/
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Stats_graph>
@@ -36,11 +44,11 @@ public:
     //void InsertLog (const Log & logToInsert)
     //Insère le log passé en entrée dans statsAndGraph.TargetsMap
 
-    //void BuildGraphFile (const string & fileName)
+    void BuildGraphFile (const string & fileName);
     //Construit le fichier fileName.dot avec le code nécessaire pour générer le graphe
-    // 1) Construire tous les noeuds -> Attention car une cible peut être un refer donc un seul noeud
 
-    //void DisplayTopTen
+
+    // void DisplayTopTen ( const TopTen & theTop);
     //Surcharge de l'opérateur << pour afficher une cible avec la syntaxe ex: /page3.html (1 hits)
 
     // type Méthode ( liste des paramètres );
@@ -81,7 +89,11 @@ public:
 
 private :
 //----------------------------------------------------- Méthodes protégées
+    void addNode ( NodesMap & nodes, int & nodeNb, const string & key) const;
 
+    string & writeLink (const int nbHit, string & links, const string & target, const string & referor, NodesMap & nodes) const;
+
+    string & writeNodes ( NodesMap & nodes, string & nodesList );
 //----------------------------------------------------- Attributs protégés
     typedef unordered_map<string, Target> TargetsMap;
     TargetsMap targets;

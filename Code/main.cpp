@@ -1,6 +1,7 @@
 #include "main.h"
 #include "StreamLog.h"
 #include "Stats_graph.h"
+#include "Utils.h"
 #include <cstring>
 #include <iostream>
 #include <sstream>
@@ -8,8 +9,7 @@
 #include <string>
 
 using namespace std;
-#include <sstream>
-#include <fstream>
+
 
 const string EXTENSION_IMAGE_JPG = ".jpg";
 const string EXTENSION_IMAGE_GIF = ".gif";
@@ -49,11 +49,6 @@ bool logFilter (const Log & aLog, const Filter & aFilter)
     return returnFilterHour||returnFilterExtension;
 }
 
-bool CheckFileExist(const string & fileName)
-{
-    ifstream file("../TestInfo/"+fileName);
-    return file.good();
-}
 
 int main ( int argc, char* argv[])
 {
@@ -77,11 +72,12 @@ int main ( int argc, char* argv[])
     Stats_graph statsAndGraph;
     int i;
     bool hourFiltered = false;
-    Time timetest (16,0,0);
-    Log logLine ("","","","",timetest,"","test",200,0,"",""); // log de test
+    //Time timetest (16,0,0);
+    //Log logLine ("","","","",timetest,"","test",200,0,"",""); // log de test
     bool extensionFiltered = false;
     int argHour2int=0;
     bool graphBuilt = false;
+    string fileNameGraph;
 
     for (i=1; i<argc-1 ; ++i)
     {
@@ -89,8 +85,8 @@ int main ( int argc, char* argv[])
         {
             if (argc >= i+2) // +2 et pas +1 car argv commence à 0
             {
-                string fileNameGraph (argv[i+1]); //où argv[i+1] = nomFichier.dot entré par l'utilisateur
-                if (fileNameGraph.find(EXTENSION_GRAPH,0)==string::npos)
+                string fileNameGraphOption (argv[i+1]); //où argv[i+1] = nomFichier.dot entré par l'utilisateur
+                if (fileNameGraphOption.find(EXTENSION_GRAPH,0)==string::npos)
                 {
                     cerr << "Le nom de fichier saisi pour la génération du graphe n'est pas correcte" << endl;
                     // Le cas où il n'y a pas de nom de fichier après -g est aussi gérer
@@ -99,7 +95,8 @@ int main ( int argc, char* argv[])
                 else
                 {
                     graphBuilt = true;
-                    cout << "création du graph avec le nom : " << fileNameGraph << endl;
+                    cout << "création du graph avec le nom : " << fileNameGraphOption << endl;
+                    fileNameGraph = fileNameGraphOption;
                 }
             }
             else
@@ -149,7 +146,7 @@ int main ( int argc, char* argv[])
     // readFile(inputFileName);
 
 
-    while (!readStream.eof())
+    /*while (!readStream.eof())
     {
         Filter optionsFilter (extensionFiltered,argHour2int,hourFiltered);
         Log logLine = *(readStream.GetLog());
@@ -159,17 +156,18 @@ int main ( int argc, char* argv[])
             cout << logLine;
             cout << "log insérer dans stats graph" << endl;
         }
-    }
+    }*/
 
     if (graphBuilt)
     {
-        //statsAndGraph.BuildGraph (fileNameGraph)
+        statsAndGraph.BuildGraphFile (fileNameGraph);
         cout << "contruction du graphe" << endl;
     }
     return 0;
 
 }
 
+/*
 void readFile (string fileName) {
     StreamLog readStream (fileName);
     while (!readStream.eof()) {
@@ -177,4 +175,4 @@ void readFile (string fileName) {
         if (! log) continue;
         cout << *log << endl;
     }
-}
+}*/

@@ -18,4 +18,6 @@ void split (string str, T & container, char delimiter = ' ') {
 
 DateTime & parseDateTime (const string & dateTimeString);
 
+bool CheckFileExist(const string & fileName);
+
 #endif

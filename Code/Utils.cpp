@@ -29,3 +29,9 @@ DateTime & parseDateTime (const string & dateTimeString) {
     DateTime* dt = new DateTime (dateStr, hours, mins, seconds);
     return *dt;
 }
+
+bool CheckFileExist(const string & fileName)
+{
+    ifstream file("../TestInfo/"+fileName);
+    return file.good();
+}

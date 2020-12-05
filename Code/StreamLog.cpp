@@ -135,12 +135,8 @@ StreamLog::~StreamLog()
 } //----- Fin de ~StreamLog
 
 StreamLog::StreamLog(const string &fileName):
-    ifstream(fileName)
-{
-    if (!(*this)) {
-        cerr << "erreur d'ouverture du fichier" << endl;
-    }
-}
+    ifstream("../TestInfo/"+fileName) {}
+
 
 //------------------------------------------------------------------ PRIVE
 
