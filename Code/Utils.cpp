@@ -57,3 +57,11 @@ void deleteUrlOptions (string & url) {
     }
     url = *begin;
 }
+
+void trim (string & str, char character) {
+    uint begin = 0;
+    uint end = str.length() - 1;
+    for (; begin < str.length() && str[begin] == character; begin++);
+    for (; end >= 0 && str[end] == character; end --);
+    str = str.substr(begin, end-begin+1);
+}

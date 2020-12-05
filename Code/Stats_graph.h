@@ -20,11 +20,8 @@ const int NUMBER_OF_ELEMENTS_TOP = 10;
 //------------------------------------------------------------------ Types
 typedef unordered_map<string, int> ReferorsMap;
 typedef unordered_map<string,string> NodesMap;
-struct Target {
-    ReferorsMap referors;
-};
 struct Referers {
-    unordered_map<string, int> referors;
+    ReferorsMap referors;
     int total;
 };
 

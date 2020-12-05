@@ -21,4 +21,6 @@ void parseDateTime (const string & dateTimeString, DateTime & dateTimeStruct);
 bool CheckFileExist(const string & fileName);
 void deleteUrlOptions (string & url);
 
+void trim (string & str, char character = ' ');
+
 #endif

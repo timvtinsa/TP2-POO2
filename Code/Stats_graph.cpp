@@ -33,16 +33,6 @@ void Stats_graph::BuildGraphFile (const string & fileName)
 {
     NodesMap nodesMatch;
     string links;
-
-    Referers targetTest;
-    Referers targetTest2;
-    Referers targetTest3;
-    targetTest.referors.insert(make_pair("R0",15));
-    targetTest2.referors.insert(make_pair("foeuhg",6));
-    targetTest3.referors.insert(make_pair("C1",5));
-    targets.insert(make_pair("C1",targetTest));
-    targets.insert(make_pair("Ceiuhg",targetTest2));
-    targets.insert(make_pair("R0",targetTest3));
     int nodeNumber =0;
 
     for(TargetsMap ::const_iterator itTarget=targets.begin() ; itTarget!=targets.end() ; ++itTarget)
@@ -98,17 +88,16 @@ void Stats_graph::Add(const Log &log)
         string referorUrl = log.referer;
         TargetsMap::iterator target = this->targets.find(log.url);
         Referers refs = target->second;
-        // If the referor already refered to this target
-        if (refs.referors.count(referorUrl)) {
-            int previousHits = refs.referors.find(referorUrl)->second;
-            cout << "this is my pair => " << referorUrl << " : " << previousHits << endl;
-            pair <string, int> ref (referorUrl, ++previousHits);
-            refs.referors.insert(ref);
+        // If the target has already been refered by the referor
+        if (refs.referors.count(referorUrl) == 1) {
+            unordered_map<string, int>::iterator referers = refs.referors.find(referorUrl);
+            referers->second = referers->second + 1;
         }else {
             pair <string, int> ref(referorUrl, 1);
             refs.referors.insert(ref);
         }
         refs.total++;
+        target->second = refs;
     }
 }
 
@@ -119,6 +108,30 @@ void Stats_graph::Add(const Log &log)
 //} //----- Fin de Méthode
 
 //------------------------------------------------- Surcharge d'opérateurs
+ostream & operator << (ostream & out, const Referers & refs) {
+    unordered_map<string, int>::const_iterator begin = refs.referors.begin();
+    unordered_map<string, int>::const_iterator end = refs.referors.end();
+    out << "REFERERS(total=" << refs.total << ") : {";
+    for (; begin != end; begin++) {
+        out << begin->first << ":" << begin->second << "|";
+    }
+    out << "}";
+    return out;
+}
+
+ostream & operator << (ostream & out, const Stats_graph & stg) {
+    unordered_map<string, Referers>::const_iterator begin = stg.targets.begin();
+    unordered_map<string, Referers>::const_iterator end = stg.targets.end();
+    out << "STATS_GRAPH {" << endl;
+    out << "\ttargets {" << endl;
+    for (; begin != end; begin++) {
+        out << "\t\t" << begin->first << " : " << begin->second << endl;
+    }
+    out << "\t}" << endl;
+    out << "}" << endl;
+    return out;
+}
+
 // Stats_graph & Stats_graph::operator = ( const Stats_graph & unStats_graph )
 // // Algorithme :
 // //

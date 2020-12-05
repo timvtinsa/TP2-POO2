@@ -78,6 +78,7 @@ Log * StreamLog::GetLog()
     }
     string referer = *(begin++);
     deleteUrlOptions(referer);
+    trim(referer, '"');
     string browser = *(begin++);
 
     return new Log(
