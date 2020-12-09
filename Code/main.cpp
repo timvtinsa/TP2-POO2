@@ -164,7 +164,8 @@ int main ( int argc, char* argv[])
             delete logLine;
         }
     }
-    cout << statsAndGraph;
+    statsAndGraph.ShowTop10();
+    //cout << statsAndGraph;
 
     if (graphBuilt)
     {

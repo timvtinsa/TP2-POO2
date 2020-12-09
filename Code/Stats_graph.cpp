@@ -70,7 +70,6 @@ void Stats_graph::BuildGraphFile (const string & fileName)
 }
 void Stats_graph::Add(const Log &log)
 {
-    cout << "Adding new log" << endl;
     // If the taget doesn't already exist
     if (this->targets.count(log.url) == 0)
     {
@@ -81,10 +80,13 @@ void Stats_graph::Add(const Log &log)
         refs.total = 1;
         pair <string, Referers> targetPair (log.url, refs);
         this->targets.insert(targetPair);
+        int posTop10 = this->findPositionInTop10(log.url);
+        if (posTop10 != -1) {
+            this->insertInTop10(log.url, posTop10);
+        }
     }
     else
     {
-        cout << "Log already exist" << endl;
         string referorUrl = log.referer;
         TargetsMap::iterator target = this->targets.find(log.url);
         Referers refs = target->second;
@@ -98,6 +100,7 @@ void Stats_graph::Add(const Log &log)
         }
         refs.total++;
         target->second = refs;
+        this->updateTop10();
     }
 }
 
@@ -155,6 +158,7 @@ Stats_graph::Stats_graph()
 #ifdef MAP
     cout << "Appel au constructeur de <Stats_graph>" << endl;
 #endif
+    this->top10Size = 0;
 } //----- Fin de Stats_graph
 
 Stats_graph::~Stats_graph()
@@ -200,4 +204,64 @@ string & Stats_graph::writeNodes ( NodesMap & nodes, string & nodesList)
         nodesList = nodesList + tmp;
     }
     return nodesList;
+}
+
+int Stats_graph::getTotal (const string & targetName) const {
+    return this->targets.at(targetName).total;
+}
+
+int Stats_graph::findPositionInTop10(const string & targetName) const {
+    if (this->top10Size == 0) return 0;
+    int targetTotal = this->getTotal(targetName);
+    int top10min = this->getTotal(this->top10[top10Size - 1]);
+    if (this->top10Size == NUMBER_OF_ELEMENTS_TOP && targetTotal <= top10min) return -1;
+    for ( int lowerBound = 0, upperBound = this->top10Size -1, index = (lowerBound+upperBound+1)/2;; ) {
+        int indexTotal = this->getTotal(this->top10[index]);
+        if ( index == 0 && targetTotal > indexTotal ) return index;
+        if ( index == NUMBER_OF_ELEMENTS_TOP - 1 && targetTotal > indexTotal) return index;
+        if ( index == this->top10Size - 1 && targetTotal < indexTotal) return this->top10Size;
+        if ( lowerBound == upperBound ) return lowerBound;
+        if ( targetTotal > indexTotal && targetTotal < this->getTotal(this->top10[index-1])) return index;
+        if ( targetTotal > indexTotal) 
+        {
+            upperBound = index;
+            index = (upperBound + lowerBound + 1 ) / 2;
+        } else 
+        {
+            lowerBound = index;
+            index = (upperBound + lowerBound + 1 ) / 2;
+        }
+    }
+}
+
+void Stats_graph::insertInTop10(const string & targetName, int position) {
+    if (position < 0 || position > NUMBER_OF_ELEMENTS_TOP - 1) return;
+    if (this->top10Size < NUMBER_OF_ELEMENTS_TOP) {
+        ++this->top10Size;
+    }
+    for (int i = top10Size - 1; i > position; --i) {
+        this->top10[i] = this->top10[i - 1];
+    }
+    this->top10[position] = targetName;
+}
+
+void Stats_graph::updateTop10() {
+    for (int i = 0; i < this->top10Size - 1; i ++) {
+        int total = this->getTotal(this->top10[i]);
+        int totalNext = this->getTotal(this->top10[i+1]);
+        if (total < totalNext) {
+            string temp = this->top10[i];
+            this->top10[i] = this->top10[i+1];
+            this->top10[i+1] = temp;
+        }
+    }
+}
+
+void Stats_graph::ShowTop10() const {
+    cout << endl << "[";
+    for (int i = 0; i < 10; i++) {
+        if (top10[i] == "") break;
+        cout << "\t" << top10[i] << " : " << this->getTotal(top10[i])<< " | " << endl;
+    }
+    cout << "]" << endl;
 }

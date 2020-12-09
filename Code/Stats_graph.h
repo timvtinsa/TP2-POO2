@@ -51,6 +51,8 @@ public:
 
     void Add (const Log & log);
 
+    void ShowTop10() const;
+
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :
     //
@@ -96,10 +98,19 @@ private :
     string & writeLink (const int nbHit, string & links, const string & target, const string & referor, NodesMap & nodes) const;
 
     string & writeNodes ( NodesMap & nodes, string & nodesList );
+
+    int findPositionInTop10(const string & targetName) const;
+
+    int getTotal (const string & targetName) const;
+
+    void insertInTop10(const string & targetName, int position);
+
+    void updateTop10();
 //----------------------------------------------------- Attributs protégés
     typedef unordered_map<string, Referers> TargetsMap;
     TargetsMap targets;
-    TargetsMap top10[10];
+    string top10[10];
+    int top10Size;
 
 };
 

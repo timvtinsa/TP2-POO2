@@ -68,13 +68,13 @@ Log * StreamLog::GetLog()
         responseCode = stoi(*(begin++));
     } 
     catch (invalid_argument & ia) {
-        cerr << "Getting response code failed" << endl;
+        //cerr << "Getting response code failed" << endl;
     }
     int amountOfData = -1;
     try {
         amountOfData = stoi(*(begin++));
     } catch (invalid_argument & ia) {
-        cerr << "Getting amount of data failed" << endl;
+        //cerr << "Getting amount of data failed" << endl;
     }
     string referer = *(begin++);
     deleteUrlOptions(referer);
