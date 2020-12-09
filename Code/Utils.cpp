@@ -66,3 +66,13 @@ void trim (string & str, char character) {
     for (; end >= 0 && str[end] == character; end --);
     str = str.substr(begin, end-begin+1);
 }
+
+string getURLFromURI (const string & URI) {
+    int numberOfSlashes = 0;
+    uint i;
+    for (i = 0; i < URI.length() && numberOfSlashes < 3; ++i) {
+        if (URI[i] == '/') ++numberOfSlashes;
+    }
+    if (numberOfSlashes==0) return URI;
+    return URI.substr(i-1, URI.length() - i+1);
+}

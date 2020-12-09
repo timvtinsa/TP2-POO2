@@ -21,6 +21,7 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "Stats_graph.h"
 #include "StreamLog.h"
+#include "Utils.h"
 #include <unordered_map>
 
 //------------------------------------------------------------- Constantes
@@ -74,7 +75,7 @@ void Stats_graph::Add(const Log &log)
     if (this->targets.count(log.url) == 0)
     {
         Referers refs;
-        string referorUrl = log.referer;
+        string referorUrl = getURLFromURI(log.referer);
         pair <string, int> refPair (referorUrl, 1);
         refs.referors.insert(refPair);
         refs.total = 1;
@@ -87,7 +88,7 @@ void Stats_graph::Add(const Log &log)
     }
     else
     {
-        string referorUrl = log.referer;
+        string referorUrl = getURLFromURI(log.referer);
         TargetsMap::iterator target = this->targets.find(log.url);
         Referers refs = target->second;
         // If the target has already been refered by the referor
@@ -101,6 +102,10 @@ void Stats_graph::Add(const Log &log)
         refs.total++;
         target->second = refs;
         this->updateTop10();
+        int posTop10 = this->findPositionInTop10(log.url);
+        if (posTop10 != -1) {
+            this->insertInTop10(log.url, posTop10);
+        }
     }
 }
 
@@ -210,26 +215,63 @@ int Stats_graph::getTotal (const string & targetName) const {
     return this->targets.at(targetName).total;
 }
 
+// int Stats_graph::findPositionInTop10(const string & targetName) const {
+//     if (this->top10Size == 0) return 0;
+//     int targetTotal = this->getTotal(targetName);
+//     int top10min = this->getTotal(this->top10[top10Size - 1]);
+//     if (this->top10Size == NUMBER_OF_ELEMENTS_TOP && targetTotal <= top10min) return -1;
+//     int iter =0;
+//     for ( int lowerBound = 0, upperBound = this->top10Size -1, index = (lowerBound+upperBound+1)/2;; ) {
+//         iter++;
+//         int indexTotal = this->getTotal(this->top10[index]);
+//         if (targetName == this->top10[index]) return -1;
+//         if ( index == 0 && targetTotal > indexTotal ) return index;
+//         else if (targetTotal <= indexTotal) return 1;
+//         if ( index == NUMBER_OF_ELEMENTS_TOP - 1 && targetTotal > indexTotal) return index;
+//         if ( index == this->top10Size - 1 && targetTotal < indexTotal) return this->top10Size;
+//         if ( lowerBound == upperBound ) return lowerBound;
+//         if ( targetTotal > indexTotal && targetTotal < this->getTotal(this->top10[index-1])) return index;
+//         if ( targetTotal > indexTotal) 
+//         {
+//             upperBound = index;
+//             index = (upperBound + lowerBound) / 2;
+//         } else if (targetTotal < indexTotal)
+//         {
+//             lowerBound = index;
+//             index = (upperBound + lowerBound + 1 ) / 2;
+//         } else {
+//             if (targetTotal<this->getTotal(this->top10[index-1])) return index;
+//             if (index == 0) return index;
+//             --index;
+//         }
+//     }
+// }
+
 int Stats_graph::findPositionInTop10(const string & targetName) const {
     if (this->top10Size == 0) return 0;
     int targetTotal = this->getTotal(targetName);
     int top10min = this->getTotal(this->top10[top10Size - 1]);
     if (this->top10Size == NUMBER_OF_ELEMENTS_TOP && targetTotal <= top10min) return -1;
-    for ( int lowerBound = 0, upperBound = this->top10Size -1, index = (lowerBound+upperBound+1)/2;; ) {
+    for ( int lowerBound = 0, upperBound = this->top10Size -1, index = (lowerBound+upperBound)/2;; ) {
         int indexTotal = this->getTotal(this->top10[index]);
-        if ( index == 0 && targetTotal > indexTotal ) return index;
-        if ( index == NUMBER_OF_ELEMENTS_TOP - 1 && targetTotal > indexTotal) return index;
-        if ( index == this->top10Size - 1 && targetTotal < indexTotal) return this->top10Size;
-        if ( lowerBound == upperBound ) return lowerBound;
-        if ( targetTotal > indexTotal && targetTotal < this->getTotal(this->top10[index-1])) return index;
-        if ( targetTotal > indexTotal) 
-        {
+        if (lowerBound == upperBound - 1) {
+            if (targetName == this->top10[lowerBound]) return -1;
+            return lowerBound;
+        }
+        if (targetTotal > indexTotal){
             upperBound = index;
-            index = (upperBound + lowerBound + 1 ) / 2;
-        } else 
-        {
+            index = (upperBound + lowerBound)/2;
+        } else if (targetTotal < indexTotal) {
             lowerBound = index;
-            index = (upperBound + lowerBound + 1 ) / 2;
+            index =  (upperBound + lowerBound)/2;
+        } else {
+            for (int i = index; i>0 && this->getTotal(this->top10[i]) == targetTotal; i--) {
+                if (this->top10[i] == targetName) return -1;
+            }
+            for (int i = index; i< this->top10Size && this->getTotal(this->top10[i]) == targetTotal; i++) {
+                if (this->top10[i] == targetName) return -1;
+            }
+            return index;
         }
     }
 }
@@ -246,7 +288,7 @@ void Stats_graph::insertInTop10(const string & targetName, int position) {
 }
 
 void Stats_graph::updateTop10() {
-    for (int i = 0; i < this->top10Size - 1; i ++) {
+    for (int i = this->top10Size - 2; i >= 0; i --) {
         int total = this->getTotal(this->top10[i]);
         int totalNext = this->getTotal(this->top10[i+1]);
         if (total < totalNext) {

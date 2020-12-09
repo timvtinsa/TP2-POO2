@@ -23,4 +23,6 @@ void deleteUrlOptions (string & url);
 
 void trim (string & str, char character = ' ');
 
+string getURLFromURI (const string & URI);
+
 #endif
