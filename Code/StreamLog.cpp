@@ -34,26 +34,29 @@ void StreamLog::ReadFile(const string &fileName)
     this->open(fileName);
 }
 
-Log * StreamLog::GetLog()
+Log *StreamLog::GetLog()
 {
     string line;
-    
-    if (!this->eof()) {
+
+    if (!this->eof())
+    {
         std::getline(*this, line);
-    } else {
+    }
+    else
+    {
         cerr << "You reached the end of the file" << endl;
         return NULL;
     }
 
-    if (line == "") {
+    if (line == "")
+    {
         return NULL;
     }
 
-    
-    vector <string> tokens;
-    split<vector <string>>(line, tokens);
+    vector<string> tokens;
+    split<vector<string>>(line, tokens);
     vector<string>::const_iterator begin = tokens.begin();
-    
+
     string ipAddress = *(begin++);
     string userLogName = *(begin++);
     string userName = *(begin++);
@@ -66,16 +69,21 @@ Log * StreamLog::GetLog()
     deleteUrlOptions(url);
     ++begin;
     int responseCode = -1;
-    try {
+    try
+    {
         responseCode = stoi(*(begin++));
-    } 
-    catch (invalid_argument & ia) {
+    }
+    catch (invalid_argument &ia)
+    {
         //cerr << "Getting response code failed" << endl;
     }
     int amountOfData = -1;
-    try {
+    try
+    {
         amountOfData = stoi(*(begin++));
-    } catch (invalid_argument & ia) {
+    }
+    catch (invalid_argument &ia)
+    {
         //cerr << "Getting amount of data failed" << endl;
     }
     string referer = *(begin++);
@@ -93,23 +101,24 @@ Log * StreamLog::GetLog()
         responseCode,
         amountOfData,
         referer,
-        browser
-    );
-
+        browser);
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
-ostream & operator << (ostream & out, const Time & t) {
+ostream &operator<<(ostream &out, const Time &t)
+{
     out << "[" << t.hour << ":" << t.minute << ":" << t.second << "]";
     return out;
 }
 
-ostream & operator << (ostream & out, const DateTime datetime) {
+ostream &operator<<(ostream &out, const DateTime datetime)
+{
     out << "[" << datetime.date << " | " << datetime.hour << ":" << datetime.minute << ":" << datetime.second << "]";
     return out;
 }
 
-ostream & operator << (ostream & out, const Log & log) {
+ostream &operator<<(ostream &out, const Log &log)
+{
     out << "LOG { " << endl;
     out << "\t \"ipAddress\": " << log.ipAddress << "," << endl;
     out << "\t \"userLogName\": " << log.userLogName << "," << endl;
@@ -144,14 +153,17 @@ StreamLog::~StreamLog()
 #endif
 } //----- Fin de ~StreamLog
 
-StreamLog::StreamLog(const string &fileName):
-    ifstream(fileName) {
-        if (!(*this)) 
-        {
-            cerr << "erreur d'ouverture du fichier" << endl;
-        }
-    }
+StreamLog::StreamLog(const string &fileName) : ifstream(fileName)
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <StreamLog>" << endl;
+#endif
 
+    if (!(*this))
+    {
+        cerr << "erreur d'ouverture du fichier" << endl;
+    }
+}
 
 //------------------------------------------------------------------ PRIVE
 

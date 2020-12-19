@@ -1,1 +1,2 @@
-Test du code retour du programme correct
+Ce test permet de voir si la manipulation de logs dont le referer est noté "-" dans le log fonctionne bien. Nous avons décider de
+consever le tiret comme nom du referer pour le log. Ainsi c'est ce nom qui s'affichera dans les sommets du graphe.
