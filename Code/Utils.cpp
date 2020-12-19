@@ -36,7 +36,7 @@ void parseDateTime (const string & dateTimeString, DateTime & dateTimeStruct) {
 
 bool CheckFileExist(const string & fileName)
 {
-    ifstream file("../TestInfo/"+fileName);
+    ifstream file(fileName);
     return file.good();
 }
 

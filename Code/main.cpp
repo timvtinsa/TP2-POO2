@@ -211,7 +211,6 @@ int main ( int argc, char* argv[])
         }
     }
     
-
     StreamLog readStream(logFileName);
     Stats_graph statsAndGraph;
 

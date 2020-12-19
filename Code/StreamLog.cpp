@@ -30,6 +30,7 @@ using namespace std;
 
 void StreamLog::ReadFile(const string &fileName)
 {
+    cout << "opening filename : " << fileName << endl;
     this->open(fileName);
 }
 
@@ -47,6 +48,7 @@ Log * StreamLog::GetLog()
     if (line == "") {
         return NULL;
     }
+
     
     vector <string> tokens;
     split<vector <string>>(line, tokens);
@@ -143,7 +145,12 @@ StreamLog::~StreamLog()
 } //----- Fin de ~StreamLog
 
 StreamLog::StreamLog(const string &fileName):
-    ifstream("../TestInfo/"+fileName) {}
+    ifstream(fileName) {
+        if (!(*this)) 
+        {
+            cerr << "erreur d'ouverture du fichier" << endl;
+        }
+    }
 
 
 //------------------------------------------------------------------ PRIVE
