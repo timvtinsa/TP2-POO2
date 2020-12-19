@@ -1,7 +1,2 @@
-Ce test permet de vérifier l'affichage des 10 documents les plus consultés par ordre décroissant.
-
-
-
-Ce test permet de tester le filtrage des logs par l'extension. Pour cela, le fichier de logs utilisé contient 6 logs avec des extensions
-ne devant pas être prises en compte lors de l'activation de l'option -e et un log devant être pris en compte lors de l'activation
-de cette option.
+Ce test permet de vérifier l'affichage des 10 documents les plus consultés par ordre décroissant sur le fichier anonyme.log 
+fourni en TP (gros fichier).

@@ -1,1 +1,1 @@
-cat 
+../analog -t 14 test_heure.log

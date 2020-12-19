@@ -1,0 +1,18 @@
+digraph {
+node8 [label="/page1.html"];
+node7 [label="/image.jpg"];
+node6 [label="/page2.html"];
+node1 [label="-"];
+node5 [label="/page3.html"];
+node0 [label="/SiteWebIF/Intranet-etudiant.php"];
+node2 [label="/temps/ML.ics"];
+node3 [label="/temps/3IF1.ics"];
+node4 [label="/temps/PL.ics"];
+node1 -> node0 [label="1"];
+node1 -> node2 [label="1"];
+node1 -> node3 [label="1"];
+node1 -> node4 [label="1"];
+node6 -> node5 [label="1"];
+node5 -> node7 [label="1"];
+node8 -> node6 [label="1"];
+}

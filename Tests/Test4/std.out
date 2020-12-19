@@ -1,0 +1,15 @@
+Dot-file graph.dot generated
+Appel au constructeur de <StreamLog>
+Appel au constructeur de <Stats_graph>
+[
+	/temps/ : 1
+	/temps/style_emploi_du_temps.css : 1
+	/apple-touch-icon.png : 1
+	/notesif/saisie2007/api_notes/functions.js : 1
+	/temps/precedent.gif : 1
+	/temps/choix_4if.html : 1
+	/SiteWebIF/Intranet-etudiant.php : 1
+	/SiteWebIF/Intranet-personnel.php : 1
+]
+Appel au destructeur de <Stats_graph>
+Appel au destructeur de <StreamLog>

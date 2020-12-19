@@ -1,10 +1,14 @@
+Dot-file graph.dot generated
 Appel au constructeur de <StreamLog>
 Appel au constructeur de <Stats_graph>
 [
-	/page2.html : 3
+	/temps/ML.ics : 1
 	/image.jpg : 1
+	/SiteWebIF/Intranet-etudiant.php : 1
+	/page2.html : 1
 	/page3.html : 1
-	/page1.html : 1
+	/temps/PL.ics : 1
+	/temps/3IF1.ics : 1
 ]
 Appel au destructeur de <Stats_graph>
 Appel au destructeur de <StreamLog>
