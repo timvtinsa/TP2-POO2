@@ -1,0 +1,16 @@
+Appel au constructeur de <Stats_graph>
+
+[
+	/SiteWebIF/Intranet-etudiant.php : 10426
+	/temps/style_emploi_du_temps.css : 4415
+	/temps/FondInsa.jpg : 4267
+	/temps/suivant.gif : 4198
+	/temps/choix.gif : 4191
+	/temps/precedent.gif : 4154
+	/temps/InsaIF.ico : 3068
+	/temps/ : 2619
+	/notesif/ : 2431
+	/temps/3IF1.ics : 2165
+]
+Appel au destructeur de <Stats_graph>
+Appel au destructeur de <StreamLog>
