@@ -1,1 +1,2 @@
-Test mal formé, sans fichier run
+Ce test permet de vérifier le fonctionner du raccourcissement des URL trop long. En effet, notre programme doit découper les URL
+trop long pour ne garder que la partie avant le point d'interrogation.

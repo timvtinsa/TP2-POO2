@@ -300,7 +300,7 @@ void Stats_graph::updateTop10() {
 }
 
 void Stats_graph::ShowTop10() const {
-    cout << endl << "[";
+    cout << "[" << endl;
     for (int i = 0; i < 10; i++) {
         if (top10[i] == "") break;
         cout << "\t" << top10[i] << " : " << this->getTotal(top10[i])<< " | " << endl;

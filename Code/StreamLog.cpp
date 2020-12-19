@@ -143,7 +143,12 @@ StreamLog::~StreamLog()
 } //----- Fin de ~StreamLog
 
 StreamLog::StreamLog(const string &fileName):
-    ifstream("../TestInfo/"+fileName) {}
+    ifstream("../TestInfo/"+fileName)
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <StreamLog>" << endl;
+#endif
+}
 
 
 //------------------------------------------------------------------ PRIVE

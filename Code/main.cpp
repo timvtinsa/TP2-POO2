@@ -1,18 +1,29 @@
-#include "main.h"
-#include "StreamLog.h"
-#include "Stats_graph.h"
-#include "Utils.h"
+/*************************************************************************
+                                    main
+                             -------------------
+    début                : 2020
+    copyright            : (C) 2020 par Timothé - Yanis
+*************************************************************************/
+
+//---------- Réalisation du module <main> (fichier main.cpp) ---------------
+
+using namespace std;
+
+/////////////////////////////////////////////////////////////////  INCLUDE
+//-------------------------------------------------------- Include système
 #include <cstring>
 #include <iostream>
 #include <sstream>
 #include <fstream>
 #include <string>
+//------------------------------------------------------ Include personnel
+#include "main.h"
+#include "StreamLog.h"
+#include "Stats_graph.h"
+#include "Utils.h"
 
-using namespace std;
-#include <sstream>
-#include <fstream>
-
-
+///////////////////////////////////////////////////////////////////  PRIVE
+//------------------------------------------------------------- Constantes
 const string EXTENSION_IMAGE_JPG = ".jpg";
 const string EXTENSION_IMAGE_GIF = ".gif";
 const string EXTENSION_IMAGE_PNG = ".png";
@@ -21,6 +32,15 @@ const string EXTENSION_CSS = ".css";
 const string EXTENSION_JAVASCRIPT = ".js";
 const string EXTENSION_GRAPH = ".dot";
 const string EXTENSION_LOG = ".log";
+
+//------------------------------------------------------------------ Types
+
+//---------------------------------------------------- Variables statiques
+
+//------------------------------------------------------ Fonctions privées
+
+//////////////////////////////////////////////////////////////////  PUBLIC
+//---------------------------------------------------- Fonctions publiques
 
 
 bool logFilter (const Log & aLog, const Filter & aFilter)
@@ -89,7 +109,7 @@ int CheckGraphFileOption (const string & fileNameGraphOption)
 {
     if (fileNameGraphOption.find(EXTENSION_GRAPH,0)==string::npos)
     {
-        cerr << "Le nom de fichier saisi pour la génération du graphe n'est pas correcte" << endl;
+        cerr << "Erreur : Le nom de fichier saisi pour la génération du graphe n'est pas correct" << endl;
         // Le cas où il n'y a pas de nom de fichier après -g est aussi gérer
         return 1;
     }
@@ -108,7 +128,7 @@ int CheckHourOption ( const string & argHour, int argHour2int)
     {
         if ((argHour2int > 23)||(argHour2int < 0))
         {
-            cerr << "L'argument saisi pour le filtre par heure n'est pas une heure (0 à 23)" << endl;
+            cerr << "Erreur : L'argument saisi pour le filtre par heure n'est pas une heure (0 à 23)" << endl;
             return 1;
         }
         else
@@ -118,7 +138,7 @@ int CheckHourOption ( const string & argHour, int argHour2int)
     }
     else
     {
-        cerr << "L'argument saisi pour le filtre par heure n'est pas un entier" << endl;
+        cerr << "Erreur : L'argument saisi pour le filtre par heure n'est pas un entier" << endl;
         return 1;
     }
 }
@@ -210,7 +230,6 @@ int main ( int argc, char* argv[])
             return 1;
         }
     }
-    
 
     StreamLog readStream(logFileName);
     Stats_graph statsAndGraph;
@@ -218,17 +237,11 @@ int main ( int argc, char* argv[])
     Filter optionsFilter (extensionFiltered,argHour2int,hourFiltered);
     BuildLogMap(optionsFilter,readStream,statsAndGraph);
 
-    //cout << statsAndGraph;
-
     if (graphBuilt)
     {
         statsAndGraph.BuildGraphFile (fileNameGraph);
     }
 
     statsAndGraph.ShowTop10();
-
-    //Lancer l'affichage du Top 10 ici
-
     return 0;
-
 }

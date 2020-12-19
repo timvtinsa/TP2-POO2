@@ -79,16 +79,12 @@ public:
 
     Log *GetLog();
     // Mode d'emploi:
-    //      Cette méthode s'occupe de la lecture d'une ligne dans le fichier actuellement lu 
-    //      dans l'objet StreamLog et retourne un pointeur vers un objet de type Log
-    //      L'objet renvoyé est créé dans la méthode. Il faut donc penser à libérer l'espace mémoire 
-    //      après utilisation.
+    //Cette méthode s'occupe de la lecture d'une ligne dans le fichier actuellement lu
+    //dans l'objet StreamLog et retourne un pointeur vers un objet de type Log
+    //L'objet renvoyé est créé dans la méthode. Il faut donc penser à libérer l'espace mémoire
+    //après utilisation.
 
     //------------------------------------------------- Surcharge d'opérateurs
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
     //-------------------------------------------- Constructeurs - destructeur
     StreamLog(const StreamLog &unStreamLog);
@@ -104,6 +100,12 @@ public:
     //
 
     StreamLog(const string &fileName);
+    // Mode d'emploi :
+    // Constuction d'un objet StreamLog à partir d'unn fichier de log
+    // dont le nom est passé en entrée
+    //
+    // Contrat : Aucun
+    //
 
     virtual ~StreamLog();
     // Mode d'emploi :

@@ -1,1 +1,1 @@
-cat fichier.txt >sortie.txt && echo "essai" >sortie2.txt
+../../Tests/analog ../../TestInfo/exemple-mini-non-exhaustif.lo

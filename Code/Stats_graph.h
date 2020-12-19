@@ -39,29 +39,39 @@ class Stats_graph
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    //void InsertLog (const Log & logToInsert)
-    //Insère le log passé en entrée dans statsAndGraph.TargetsMap
 
     void BuildGraphFile (const string & fileName);
-    //Construit le fichier fileName.dot avec le code nécessaire pour générer le graphe
-
-
-    // void DisplayTopTen ( const TopTen & theTop);
-    //Surcharge de l'opérateur << pour afficher une cible avec la syntaxe ex: /page3.html (1 hits)
+    // Mode d'emploi :
+    // Cette méthode permet de construire le fichier .dot avec le code permettant de construire
+    // le graphe à partir des données contenus dans l'objet qui appelle la méthode
+    //
+    // Contrat : Aucun
+    //
 
     void Add (const Log & log);
+    // Mode d'emploi :
+    // Cette méthode permet d'ajouter un log dans l'objet statsAndGraph qui appelle la méthode.
+    // Le contrôle de la validité du log se fait avant son ajout dans une autre fonction.
+    //
+    // Contrat : Aucun
+    //
 
     void ShowTop10() const;
-
-    // type Méthode ( liste des paramètres );
     // Mode d'emploi :
+    // Cette méthode permet d'affciher le TOP 10 correspondant aux données contenues dans
+    // l'objet statsAndGraph qui appelle la méthode.
     //
-    // Contrat :
+    // Contrat : Aucun
     //
 
 
 //------------------------------------------------- Surcharge d'opérateurs
     friend ostream & operator << (ostream & out, const Stats_graph & stg);
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+
 
     Stats_graph & operator = ( const Stats_graph & unStats_graph );
     // Mode d'emploi :
@@ -94,18 +104,61 @@ public:
 private :
 //----------------------------------------------------- Méthodes protégées
     void addNode ( NodesMap & nodes, int & nodeNb, const string & key) const;
+    // Mode d'emploi :
+    // Cette méthode permet d'jouter un noeud dans la map de noeuds qui stocke tous les
+    // noeuds que l'on va devoir créer dans le graph associé à l'objet statsAndGraph
+    //
+    // Contrat :
+    //
 
     string & writeLink (const int nbHit, string & links, const string & target, const string & referor, NodesMap & nodes) const;
+    // Mode d'emploi :
+    // Cette méthode permet d'écrire un lien entre deux noeuds pour le code de génération du graphe.
+    //
+    // Contrat : Aucun
+    //
 
     string & writeNodes ( NodesMap & nodes, string & nodesList );
+    // Mode d'emploi :
+    // Cette méthode permet d'ajouter tous les noeuds contenus dans la map de
+    // noeuds nodes passées en entrée dans une chaîne de caractères que l'on pourra
+    // alors directement insérer dans le fichier .dot
+    //
+    // Contrat : Aucun
+    //
 
     int findPositionInTop10(const string & targetName) const;
+    // Mode d'emploi :
+    // Cette méthode permet de trouver la postion d'une cible (dont le nom est
+    // passée en entrée de la méthode) dans le tableau correspondant au TOP 10.
+    //
+    // Contrat : Aucun
+    //
 
     int getTotal (const string & targetName) const;
+    // Mode d'emploi :
+    // Cette méthode permet d'obtenir le total des hits associé à une cible
+    // (dont le nom est passé en entrée de la méthode).
+    //
+    // Contrat : Aucun
+    //
 
     void insertInTop10(const string & targetName, int position);
+    // Mode d'emploi :
+    // Cette méthode permet d'insérer une cible dans le tableau du top 1à à une
+    // positon donnée (passée en entrée)
+    //
+    // Contrat : Aucun
+    //
+
 
     void updateTop10();
+    // Mode d'emploi :
+    // Cette méthode permet de mettre à jour le TOP 10.
+    //
+    // Contrat : Aucun
+    //
+
 //----------------------------------------------------- Attributs protégés
     typedef unordered_map<string, Referers> TargetsMap;
     TargetsMap targets;

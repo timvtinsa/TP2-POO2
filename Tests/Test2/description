@@ -1,1 +1,3 @@
-Essai de test de recopie d'entrée standard
+Ce test permet de tester le filtrage des logs par l'heure. Pour cela, on va effectuer un test de filtrage sur les log de 14h.
+Le fichier de logs test contient 7 logs dont 4 doivent être conservés avec l'application du filtre -t 14. On verfie bien que
+l'heure des logs conservés est bien comprise entre [t,t+1[.

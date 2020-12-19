@@ -1,1 +1,3 @@
-Ce test permet de vérifier la production d'un fichier en sortie du programme testé
+Ce test permet de tester le filtrage des logs par l'extension. Pour cela, le fichier de logs utilisé contient 6 logs avec des extensions
+ne devant pas être prises en compte lors de l'activation de l'option -e et un log devant être pris en compte lors de l'activation
+de cette option.
