@@ -1,0 +1,2 @@
+Ce test permet de vérfier le comportement du programme lorsque l'utilisateur entre une heure qui n'est pas comprise entre 0 et
+23 pour l'option de filtrage selon une heure.

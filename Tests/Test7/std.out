@@ -1,0 +1,10 @@
+Appel au constructeur de <StreamLog>
+Appel au constructeur de <Stats_graph>
+[
+	/page2.html : 3 |
+	/page3.html : 1 |
+	/image.jpg : 1 |
+	/page1.html : 1 |
+]
+Appel au destructeur de <Stats_graph>
+Appel au destructeur de <StreamLog>

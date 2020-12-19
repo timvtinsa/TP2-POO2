@@ -1,0 +1,2 @@
+Ce test permet de vérfier le comportement du programme lorsque l'utilisateur entre un nom de fichier non valide pour l'option
+de génération du graphe, c'est-à-dire un fichier qui n'est pas au format .dot

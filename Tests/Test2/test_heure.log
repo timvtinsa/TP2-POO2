@@ -1,0 +1,7 @@
+192.168.0.1 - - [08/Sep/2012:14:00:00 +0200] "GET /page2.html HTTP/1.1" 200 2000 "http://intranet-if.insa-lyon.fr/page1.html" "Mozilla/5.0"
+192.168.0.1 - - [08/Sep/2012:14:37:00 +0200] "GET /page1.html HTTP/1.1" 200 1000 "http://intranet-if.insa-lyon.fr/page2.html" "Mozilla/5.0"
+192.168.0.1 - - [08/Sep/2012:14:59:00 +0200] "GET /page2.html HTTP/1.1" 200 2000 "http://intranet-if.insa-lyon.fr/page3.html" "Mozilla/5.0"
+192.168.0.1 - - [08/Sep/2012:14:59:59 +0200] "GET /page2.html HTTP/1.1" 200 2000 "http://intranet-if.insa-lyon.fr/page3.html" "Mozilla/5.0"
+192.168.0.1 - - [08/Sep/2012:15:00:00 +0200] "GET /page3.html HTTP/1.1" 200 3000 "http://intranet-if.insa-lyon.fr/page2.html" "Mozilla/5.0"
+192.168.0.1 - - [08/Sep/2012:13:59:59 +0200] "GET /image.jpg HTTP/1.1" 200 50000 "http://intranet-if.insa-lyon.fr/page3.html" "Mozilla/5.0"
+192.168.0.1 - - [08/Sep/2012:15:00:01 +0200] "GET /page2.html HTTP/1.1" 200 2000 "http://intranet-if.insa-lyon.fr/page1.html?key=value" "Mozilla/5.0"
