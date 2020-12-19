@@ -119,14 +119,14 @@ int CheckGraphFileOption (const string & fileNameGraphOption)
     }
 }
 
-int CheckHourOption ( const string & argHour, int argHour2int)
+int CheckHourOption ( const string & argHour, int * argHour2int)
 {
     stringstream ss;
     ss << argHour;
-    ss >> argHour2int;
+    ss >> *argHour2int;
     if (!(ss.fail()))
     {
-        if ((argHour2int > 23)||(argHour2int < 0))
+        if ((*argHour2int > 23)||(*argHour2int < 0))
         {
             cerr << "Erreur : L'argument saisi pour le filtre par heure n'est pas une heure (0 à 23)" << endl;
             return 1;
@@ -207,7 +207,7 @@ int main ( int argc, char* argv[])
                 if (argc >= i+2) // +2 et pas +1 car argv commence à 0
                 {
                     string argHour(argv[i+1]); //où argv[i+1] = nomFichier.dot entré par l'utilisateur
-                    if (CheckHourOption(argHour,argHour2int))
+                    if (CheckHourOption(argHour,&argHour2int))
                     {
                         return 1;
                     }
@@ -230,7 +230,7 @@ int main ( int argc, char* argv[])
             return 1;
         }
     }
-    
+
     StreamLog readStream(logFileName);
     Stats_graph statsAndGraph;
 

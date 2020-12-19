@@ -1,0 +1,7 @@
+192.168.0.239 - - [12/Sep/2012:08:51:19 +0200] "GET /temps/3IF1.ics HTTP/1.1" 304 - "-" "DataAccess/1.0 (8C148)"
+192.168.0.41 - - [12/Sep/2012:08:51:58 +0200] "GET /temps/ML.ics HTTP/1.1" 304 - "-" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322) Zimbra/2.0"
+192.168.1.81 - - [12/Sep/2012:09:00:14 +0200] "GET /temps/PL.ics HTTP/1.1" 200 10935 "-" "CalendarStore/5.0.3 (1204.1); iCal/5.0.3 (1605.3); Mac OS X/10.7.4 (11E53)"
+192.168.0.1 - - [08/Sep/2012:15:00:00 +0200] "GET /page3.html HTTP/1.1" 200 3000 "http://intranet-if.insa-lyon.fr/page2.html" "Mozilla/5.0"
+192.168.0.1 - - [08/Sep/2012:13:59:59 +0200] "GET /image.jpg HTTP/1.1" 200 50000 "http://intranet-if.insa-lyon.fr/page3.html" "Mozilla/5.0"
+192.168.0.1 - - [08/Sep/2012:15:00:01 +0200] "GET /page2.html HTTP/1.1" 200 2000 "http://intranet-if.insa-lyon.fr/page1.html?key=value" "Mozilla/5.0"
+192.168.2.221 - - [12/Sep/2012:09:03:03 +0200] "GET /SiteWebIF/Intranet-etudiant.php HTTP/1.1" 200 3793 "-" "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.89 Safari/537.1"

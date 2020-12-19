@@ -256,7 +256,9 @@ int Stats_graph::findPositionInTop10(const string & targetName) const {
         int indexTotal = this->getTotal(this->top10[index]);
         if (lowerBound == upperBound - 1) {
             if (targetName == this->top10[lowerBound]) return -1;
-            return lowerBound;
+            if (indexTotal > this->getTotal(this->top10[lowerBound]))
+                return lowerBound;
+            return upperBound;
         }
         if (targetTotal > indexTotal){
             upperBound = index;

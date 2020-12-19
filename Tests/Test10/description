@@ -1,0 +1,2 @@
+Ce test permet de vérfier le comportement du programme lorsque l'utilisateur entre une chaine de caractères qui n'est pas un
+entier à la place du paramètre attendu lors de l'utilisation de l'option de filtrage par heure

@@ -1,2 +1,3 @@
 Ce test permet de vérifier le fonctionner du raccourcissement des URL trop long. En effet, notre programme doit découper les URL
-trop long pour ne garder que la partie avant le point d'interrogation.
+trop long pour ne garder que la partie avant le point d'interrogation (Les options de l'URL ne sont pas prises en compte afin,
+notamment, de ne pas les faire apparaitre dans les sommets du graphe).

@@ -1,0 +1,22 @@
+digraph {
+node10 [label="/notesif/saisie2007/"];
+node11 [label="/temps/style_emploi_du_temps.css"];
+node9 [label="/notesif/saisie2007/api_notes/functions.js"];
+node7 [label="/temps/precedent.gif"];
+node6 [label="/temps/choix_4if.html"];
+node1 [label="-"];
+node8 [label="/temps/3IF37.html"];
+node4 [label="/SiteWebIF/Intranet-personnel.php"];
+node0 [label="/apple-touch-icon.png"];
+node3 [label="/url"];
+node2 [label="/temps/"];
+node5 [label="/SiteWebIF/Intranet-etudiant.php"];
+node1 -> node0 [label="1"];
+node3 -> node2 [label="1"];
+node1 -> node4 [label="1"];
+node1 -> node5 [label="1"];
+node3 -> node6 [label="1"];
+node8 -> node7 [label="1"];
+node10 -> node9 [label="1"];
+node2 -> node11 [label="1"];
+}
