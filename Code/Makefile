@@ -27,3 +27,8 @@ Clean :
 
 MrProper : Clean
 	rm -rf $(EXEC)
+
+Test :
+	cd ../Tests && bash ./mktest.sh && cd -
+	#sh -c 'cd ../Tests/ && bash ./mktest.sh'
+
